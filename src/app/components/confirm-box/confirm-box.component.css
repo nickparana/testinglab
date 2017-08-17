@@ -1,0 +1,17 @@
+.confirm-box
+{   position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 600px;
+    height: 200px;     
+}
+.confirm-box-container{     
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+}

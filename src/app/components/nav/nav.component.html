@@ -1,0 +1,175 @@
+<header>
+	<!-- Dropdown Usuario Structure -->
+	<ul id="dropdownUsuario" class="dropdown-content">
+		<li routerLinkActive="active">
+			<a routerLink="perfil" class="grey-text text-darken-4">
+				<i class="fa fa-user fa-lg fa-fw pull-left"></i>Mi cuenta
+			</a>
+		</li>
+		<li>
+			<a routerLink="/" (click)="logOut()" class="grey-text text-darken-4"><i class="fa fa-sign-out fa-lg fa-fw pull-left"></i>Salir</a>
+		</li>
+	</ul>
+
+	<!-- Dropdown Usuarios Structure -->
+	<ul id="dropdownUsuarios" class="dropdown-content">
+		<li routerLinkActive="active">
+			<a routerLink="usuarios" class="grey-text text-darken-4">
+				<i class="fa fa-list fa-lg fa-fw pull-left"></i>Lista</a>
+		</li>
+		<li routerLinkActive="active">
+			<a routerLink="usuario-nuevo" class="grey-text text-darken-4">
+				<i class="fa fa-plus-square-o fa-lg fa-fw pull-left"></i>Nuevo</a>
+		</li>
+	</ul>
+
+	<!-- Dropdown Cursos Structure -->
+	<ul id="dropdownCursos" class="dropdown-content">
+		<li routerLinkActive="active">
+			<a routerLink="cursos" class="grey-text text-darken-4">
+				<i class="fa fa-list fa-lg fa-fw pull-left"></i>Lista</a>
+		</li>
+		<li routerLinkActive="active">
+			<a routerLink="curso-nuevo" class="grey-text text-darken-4">
+				<i class="fa fa-plus-square-o fa-lg fa-fw pull-left"></i>Nuevo</a>
+		</li>
+	</ul>
+
+	<!-- Dropdown Alumnos Structure -->
+	<ul id="dropdownAlumnos" class="dropdown-content">
+		<li routerLinkActive="active">
+			<a routerLink="alumnos" class="grey-text text-darken-4">
+				<i class="fa fa-list fa-lg fa-fw pull-left"></i>Lista</a>
+		</li>
+		 <li routerLinkActive="active">
+			<a routerLink="alumno-nuevo" class="grey-text text-darken-4">
+				<i class="fa fa-plus-square-o fa-lg fa-fw pull-left"></i>Nuevo</a>
+		</li> 
+	</ul>
+
+	<div class="navbar">
+		<nav>
+			<div class="nav-wrapper teal">
+				<a [hidden]="!showNav" href="#" data-activates="side-menu" class="button-collapse"><i class="material-icons">menu</i></a>
+				<!-- LEFT SIDE NAVBAR -->
+				<ul [hidden]="!showNav" class="left hide-on-med-and-down">
+
+					<!-- <li routerLinkActive="active">
+						<a routerLink="home"><i class="fa fa-home fa-lg fa-fw pull-left"></i>Home</a>
+					</li> -->
+
+					<!-- Dropdown Usuarios Trigger -->
+					 <li [class.active]="this.router.url === '/usuario-nuevo' || this.router.url === '/usuarios' || this.router.url === '/usuario-detail'">
+						<a routerLink="usuarios" class="dropdown-button" data-activates="dropdownUsuarios" data-hover="true" data-beloworigin="true">
+							<i class="fa fa-users fa-lg fa-fw pull-left"></i>Usuarios
+						</a>
+					</li> 
+
+					<!-- Dropdown Alumnos Trigger -->
+					<li [class.active]="this.router.url === '/alumno-nuevo' || this.router.url === '/alumnos' || this.router.url === '/alumno-detail'">
+						<a routerLink="alumnos" class="dropdown-button" data-activates="dropdownAlumnos" data-hover="true" data-beloworigin="true">
+							<i class="fa fa-graduation-cap fa-lg fa-fw pull-left"></i>Alumnos
+						</a>
+					</li>
+
+					<!-- Dropdown Cursos Trigger -->
+					<li [class.active]="this.router.url === '/curso-nuevo' || this.router.url === '/cursos' || this.router.url === '/curso-detail'">
+						<a routerLink="cursos" class="dropdown-button" data-activates="dropdownCursos" data-hover="true" data-beloworigin="true">
+							<i class="fa fa-book fa-lg fa-fw pull-left"></i>Cursos
+						</a>
+					</li>
+				</ul>
+
+				<!-- RIGHT SIDE NAVBAR -->
+				<ul [hidden]="!showNav" class="right hide-on-med-and-down">
+
+					<!-- Dropdown Usuario Trigger -->
+					<li [class.active]="this.router.url === '/perfil'">
+						<a class="dropdown-button" data-activates="dropdownUsuario" data-hover="true" data-beloworigin="true">
+							<i class="fa fa-user fa-lg fa-fw pull-left"></i>{{usuario?.nombre+' '+usuario?.apellido}}
+						</a>
+					</li>
+				</ul>
+
+				<!-- SIDE MENU NAVBAR -->
+				<ul id="side-menu" class="side-nav" [hidden]="!showNav">
+					<li class="no-padding">
+						<ul class="collapsible collapsible-accordion">
+							<!-- <li routerLinkActive="active">
+								<a routerLink="home" class="collapsible-header"><i class="fa fa-home fa-lg fa-fw pull-left"></i>Home</a>
+							</li> -->
+
+							 <li class="bold">
+								<a class="collapsible-header  waves-effect waves-teal" routerLink="usuarios">
+									<i class="fa fa-users fa-lg fa-fw pull-left"></i>Usuarios</a>
+								<div class="collapsible-body">
+									<ul>
+										<li>
+											<a routerLink="usuarios">
+												<i class="fa fa-list fa-lg fa-fw pull-left"></i>Lista</a>
+										</li>
+										<li>
+											<a routerLink="usuario-nuevo">
+												<i class="fa fa-plus-square-o fa-lg fa-fw pull-left"></i>Nuevo</a>
+										</li>
+									</ul>
+								</div>
+							</li> 
+
+							<li class="bold">
+								<a class="collapsible-header  waves-effect waves-teal" routerLink="alumnos">
+									<i class="fa fa-graduation-cap fa-lg fa-fw pull-left"></i>Alumnos</a>
+								<div class="collapsible-body">
+									<ul>
+										<li>
+											<a routerLink="alumnos">
+												<i class="fa fa-list fa-lg fa-fw pull-left"></i>Lista</a>
+										</li>
+										 <li>
+											<a routerLink="alumno-nuevo">
+												<i class="fa fa-plus-square-o fa-lg fa-fw pull-left"></i>Nuevo</a>
+										</li> 
+									</ul>
+								</div>
+							</li>
+
+							<li class="bold">
+								<a class="collapsible-header  waves-effect waves-teal" routerLink="cursos">
+									<i class="fa fa-book fa-lg fa-fw pull-left"></i>Cursos</a>
+								<div class="collapsible-body">
+									<ul>
+										<li>
+											<a routerLink="cursos">
+												<i class="fa fa-list fa-lg fa-fw pull-left"></i>Lista</a>
+										</li>
+										<li>
+											<a routerLink="curso-nuevo">
+												<i class="fa fa-plus-square-o fa-lg fa-fw pull-left"></i>Nuevo</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+
+							<li class="bold" [hidden]="!usuario">
+								<a class="collapsible-header  waves-effect waves-teal">
+									<i class="fa fa-user fa-lg fa-fw pull-left"></i>{{usuario?.nombre+' '+usuario?.apellido}}</a>
+								<div class="collapsible-body">
+									<ul>
+										<li>
+											<a routerLink="perfil">
+												<i class="fa fa-user fa-lg fa-fw pull-left"></i>Mi cuenta</a>
+										</li>
+										<li>
+											<a routerLink="/" (click)="logOut()">
+												<i class="fa fa-sign-out fa-lg fa-fw pull-left"></i>Salir</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+</header>

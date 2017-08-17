@@ -1,0 +1,24 @@
+<div id="usuario-detail-container" *ngIf="usuario" [hidden]="active">
+	<div class="row">
+		<h4>{{usuario.nombre + " " + usuario.apellido | uppercase}}</h4>
+
+		<ul class="fa-ul">
+			<li><i class="fa-li fa fa-id-card-o"></i><strong>Nombre: </strong> {{usuario.nombre}}</li>
+			<li><i class="fa-li fa fa-id-card-o"></i><strong>Apellido:</strong> {{usuario.apellido}}</li>
+			<li><i class="fa-li fa fa-id-badge"></i><strong>Username:</strong> {{usuario.username}}</li>
+			<li><i class="fa-li fa fa-envelope-o"></i><strong>E-Mail:</strong> {{usuario.email}}</li>
+		</ul>
+	</div>
+</div>
+
+<div class="row form-buttons" *ngIf="!active">
+	<a class="waves-effect waves-light btn teal" (click)="gotoEditUsuario()">
+		<i class="fa fa-pencil fa-lg fa-fw pull-left"></i>EDITAR
+	</a>
+	<a class="waves-effect waves-light btn teal" (click)="deleteUsuario()" *ngIf="me?._id != usuario?._id">
+		<i class="fa fa-trash-o fa-lg fa-fw pull-left"></i>ELIMINAR
+	</a>
+	<a class="waves-effect waves-light btn teal" (click)="goBack()">
+		<i class="fa fa-arrow-left fa-lg fa-fw pull-left"></i>VOLVER
+	</a>
+</div>

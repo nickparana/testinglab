@@ -1,0 +1,135 @@
+<div id="form-container">
+	<div class="valign-wrapper" style="width:100%;height:100%;position: relative;">
+		<div class="valign" style="width:100%;">
+			<div class="container">
+				<div class="row">
+					<div class="col s12 m6 offset-m3">
+						<form #cursoForm="ngForm" (ngSubmit)="onSubmit(cursoForm)">
+							<div [hidden]="editMode" class="row">
+								<h5>Nuevo curso</h5>
+							</div>
+							<div [hidden]="!editMode" class="row">
+								<h5>Editar curso: {{newCurso.nombre}}</h5>
+							</div>
+							<div class="row">
+								<div class="col s12 m12 l12">
+
+									<!--Nombre-->
+									<div class="input-field">
+										<i class="fa fa-book fa-lg fa-fw prefix"></i>
+										<input id="nombre" type="text" class="form-control validate" [(ngModel)]="newCurso.nombre" name="nombre" pattern="[A-Za-z0-9-_\sáéíóúÁÉÍÓÚÑñ.,]+"
+										 title="El texto ingresado no puede contener caracteres especiales" required>
+										<label for="nombre" class="active" data-error="El texto ingresado no puede contener caracteres especiales" data-success="">Nombre</label>
+									</div>
+
+									<!--Descripción-->
+									<div class="input-field">
+										<i class="fa fa-book fa-lg fa-fw prefix"></i>
+										<textarea id="descripcion" type="text" class="form-control validate materialize-textarea" [(ngModel)]="newCurso.descripcion"
+										 name="descripcion" pattern="[A-Za-z0-9-_\sáéíóúÁÉÍÓÚÑñ.,]+" title="El texto ingresado no puede contener caracteres especiales"
+										 required></textarea>
+										<label for="descripcion" class="active" data-error="El texto ingresado no puede contener caracteres especiales" data-success="">Descripción</label>
+									</div>
+
+									<div class="row">
+										<div class="col s6">
+											<!--Fecha Inicio-->
+											<div class="input-field">
+												<i class="fa fa-calendar fa-lg fa-fw prefix"></i>
+												<!-- <input id="fechaInicio" type="text" class="form-control datepicker" [(ngModel)]="newCurso.fechaInicio" name="fechaInicio">  -->
+												<input id="fechaInicio" class="form-control validate" type="date" [(ngModel)]="newCurso.fechaInicio" name="fechaInicio" required>
+												<label class="active" for="fechaInicio" data-error="" data-success="">Fecha Inicio</label>
+												 {{"fecha: " + newCurso.fechaInicio}}
+											</div>
+										</div>
+										<div class="col s6">
+											<!--Fecha Fin-->
+											<div class="input-field">
+												<i class="fa fa-calendar fa-lg fa-fw prefix"></i>
+												<input id="fechaFin" type="text" class="form-control datepicker" [(ngModel)]="newCurso.fechaFin" name="fechaFin" #v>
+												<label class="active" for="fechaFin">Fecha Fin</label>
+											</div>
+										</div>
+									</div>
+
+									<!--Días-->
+									<label>Días curso</label>
+									<div class="row">
+										<div class="col s2">
+											<input type="checkbox" class="filled-in" id="lunes" value="LUN" #lunescb (change)="setDias(lunescb.value)" />
+											<label for="lunes">L</label>
+										</div>
+
+										<div class="col s2">
+											<input type="checkbox" class="filled-in" id="martes" (change)="setDias('MAR')" />
+											<label for="martes">M</label>
+										</div>
+										<div class="col s2">
+											<input type="checkbox" class="filled-in" id="miercoles" (change)="setDias('MIE')" />
+											<label for="miercoles">M</label>
+										</div>
+										<div class="col s2">
+											<input type="checkbox" class="filled-in" id="jueves" (change)="setDias('JUE')" />
+											<label for="jueves">J</label>
+										</div>
+										<div class="col s2">
+											<input type="checkbox" class="filled-in" id="viernes" (change)="setDias('VIE')" />
+											<label for="viernes">V</label>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col s6">
+											<!--Hora Inicio-->
+											<label>Hora Inicio</label>
+											<div class="input-field">
+												<i class="fa fa-clock-o fa-lg fa-fw prefix"></i>
+												<input id="horaInicio" type="time" class="form-control" [(ngModel)]="newCurso.horaInicio" name="horaInicio">
+
+											</div>
+										</div>
+										<div class="col s6">
+											<!--Hora Fin-->
+											<label>Hora Fin</label>
+											<div class="input-field">
+												<i class="fa fa-clock-o fa-lg fa-fw prefix"></i>
+												<input id="horaFin" type="time" class="form-control" [(ngModel)]="newCurso.horaFin" name="horaFin">
+
+											</div>
+										</div>
+									</div>
+
+
+
+									<!--Cupo-->
+									<div class="row">
+										<div class="col s6">
+											<div class="input-field">
+												<i class="fa fa-users fa-lg fa-fw prefix"></i>
+												<input id="cupo" type="number" class="form-control validate" [(ngModel)]="newCurso.cupo" name="cupo" min="0" required>
+												<label for="cupo" class="active" data-error="Ingrese un número mayor a 0" data-success="">Cupo</label>
+											</div>
+										</div>
+									</div>
+
+
+
+
+
+
+								</div>
+							</div>
+
+							<div class="row form-buttons">
+								<a class="waves-effect waves-light btn teal" (click)="goBack()">
+					CANCELAR</a>
+								<button class="waves-effect waves-light btn teal" type="submit">
+					ACEPTAR</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,112 @@
+<div id="form-container">
+	<div class="valign-wrapper" style="width:100%;height:100%;position: relative;">
+		<div class="valign" style="width:100%;">
+			<div class="container">
+				<div class="row">
+					<div class="col s12 m6 offset-m3">
+						<form #usuarioForm="ngForm" (ngSubmit)="onSubmit(usuarioForm)">
+							<div [hidden]="editMode" class="row">
+								<h5>Nuevo usuario</h5>
+							</div>
+							<div [hidden]="!editMode" class="row">
+								<h5>Editar usuario: {{newUsuario.username}}</h5>
+							</div>
+							<div class="row">
+								<div class="col s12 m12 l12">
+
+									<!--Username-->
+									<div *ngIf="!editMode" class="input-field">
+										<i class="material-icons prefix">account_circle</i>
+										<input id="username" type="text" class="form-control validate" [(ngModel)]="newUsuario.username" name="username" pattern="[A-Za-z0-9-_\sáéíóúÁÉÍÓÚÑñ.,]+"
+										 title="El texto ingresado no puede contener caracteres especiales" required>
+										<label for="username" class="active" data-error="El texto ingresado no puede contener caracteres especiales" data-success="">Username</label>
+									</div>
+
+									<!--Nombre-->
+									<div class="input-field">
+										<i class="material-icons prefix">account_circle</i>
+										<input id="nombre" type="text" class="form-control validate" [(ngModel)]="newUsuario.nombre" name="nombre" pattern="[A-Za-z0-9-_\sáéíóúÁÉÍÓÚÑñ.,]+"
+										 title="El texto ingresado no puede contener caracteres especiales" required>
+										<label for="nombre" class="active" data-error="El texto ingresado no puede contener caracteres especiales" data-success="">Nombre</label>
+									</div>
+
+									<!--Apellido-->
+									<div class="input-field">
+										<i class="material-icons prefix">account_circle</i>
+										<input id="apellido" type="text" class="form-control validate" [(ngModel)]="newUsuario.apellido" name="apellido" pattern="[A-Za-z0-9-_\sáéíóúÁÉÍÓÚÑñ.,]+"
+										 title="El texto ingresado no puede contener caracteres especiales" required>
+										<label for="apellido" class="active" data-error="El texto ingresado no puede contener caracteres especiales" data-success="">Apellido</label>
+									</div>
+
+									<!--DNI-->
+									<div class="input-field">
+										<i class="material-icons prefix">account_circle</i>
+										<input id="dni" type="text" class="form-control validate" [(ngModel)]="newUsuario.dni" name="dni" pattern="^[0-9]+"
+										 title="El texto ingresado no puede contener caracteres especiales" required>
+										<label for="dni" class="active" data-error="El DNI ingresado tiene un formato no válido" data-success="">DNI</label>
+									</div>
+
+									<!--E-Mail-->
+									<div class="input-field">
+										<i class="material-icons prefix">email</i>
+										<input id="email" type="email" class="form-control validate" [(ngModel)]="newUsuario.email" name="email" pattern="[A-Za-z0-9-_\sáéíóúÁÉÍÓÚÑñ.,@]+"
+										 title="El e-mail ingresado no puede contener caracteres especiales" required>
+										<label for="email" class="active" data-error="El e-mail ingresado tiene un formato no válido" data-success="">Email</label>
+									</div>
+
+									<!--E-Mail-->
+									<div class="input-field">
+										<i class="material-icons prefix">email</i>
+										<input id="emailCheck" type="email" class="form-control validate" [(ngModel)]="emailCheck" name="emailCheck" pattern="[A-Za-z0-9-_\sáéíóúÁÉÍÓÚÑñ.,@]+"
+										 title="El e-mail ingresado no puede contener caracteres especiales" required>
+										<label for="email" class="active" data-error="El e-mail ingresado tiene un formato no válido" data-success="">Email</label>
+									</div>
+
+									<!--Password-->
+									<div class="input-field" *ngIf="!editMode">
+										<i class="material-icons prefix">vpn_key</i>
+										<input id="password" type="password" class="form-control validate" [(ngModel)]="newUsuario.password" name="password" required pattern=".{5,12}"
+										 title="Debe tener entre 5 y 12 caracteres">
+										<label for="password" class="active" data-error="La password debe tener entre 5 y 12 caracteres" data-success="">Password</label>
+									</div>
+
+									<!--Password-->
+									<div class="input-field" *ngIf="!editMode">
+										<i class="material-icons prefix">vpn_key</i>
+										<input id="passwordCheck" type="password" class="form-control validate" [(ngModel)]="passwordCheck" name="passwordCheck" required
+										 pattern=".{5,12}" title="Debe tener entre 5 y 12 caracteres">
+										<label for="password" class="active" data-error="La password debe tener entre 5 y 12 caracteres" data-success="">Password</label>
+									</div>
+
+									<!--Password-->
+									<div class="input-field" *ngIf="editMode">
+										<i class="material-icons prefix">vpn_key</i>
+										<input id="password" type="password" class="form-control validate" [(ngModel)]="newUsuario.password" name="password" required pattern=".{5,12}"
+										 title="Debe tener entre 5 y 12 caracteres">
+										<label for="password" class="active" data-error="La password debe tener entre 5 y 12 caracteres" data-success="">Password</label>
+									</div>
+
+									<!--Password-->
+									<div class="input-field" *ngIf="editMode">
+										<i class="material-icons prefix">vpn_key</i>
+										<input id="passwordCheck" type="password" class="form-control validate" [(ngModel)]="passwordCheck" name="passwordCheck" required pattern=".{5,12}"
+										 title="Debe tener entre 5 y 12 caracteres">
+										<label for="password" class="active" data-error="La password debe tener entre 5 y 12 caracteres" data-success="">Password</label>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="row form-buttons">
+								<a class="waves-effect waves-light btn teal" (click)="goBack()">
+					CANCELAR</a>
+								<button class="waves-effect waves-light btn teal" type="submit">
+					ACEPTAR</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

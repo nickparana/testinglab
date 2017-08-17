@@ -1,0 +1,11 @@
+#form-container{  
+    padding: 20px;  
+    /*margin: 20px 20px 20px 20px;*/
+}
+.form-buttons{
+    display: block;
+    float: right;
+}
+.form-buttons a{
+  margin: 5px;
+}

@@ -1,0 +1,21 @@
+.form-buttons{
+    display: block;
+    float: right;
+    margin-right: 50px;
+}
+.form-buttons a{
+  margin: 5px;
+}
+#alumno-detail-container{
+    padding: 20px;
+}
+.fa-ul li{
+    display: inline; 
+    margin-right: 30px;
+    padding-right: 10px;
+    border-right: solid black;
+    border-right-width: thin;
+}
+ #tabla-alumno-cursos{
+    /* padding: 20px;   */
+} 

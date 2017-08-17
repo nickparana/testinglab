@@ -1,0 +1,47 @@
+<div [hidden]="!showInput" class="row">
+    <form (ngSubmit)="search(searchString.value)">
+        <div class="search">
+            <span class="fa fa-search"></span>
+            <!--<input id="search" type="text" placeholder="Filtrar por..." #searchString  (keyup)="inputSearch(searchString.value)">-->
+            <input [disabled]="!data.length" id="search" type="text" placeholder="Buscar..." #searchString [(ngModel)]="searchFilter"
+                name="searchFilter">
+            <button [disabled]="!data.length" class="waves-effect waves-light btn teal" type="submit">
+					Buscar</button>
+            <div class="col s2" style="float:right;" [hidden]="!showSelect">
+                <select [disabled]="!data.length" class="browser-default" (change)="changeFilter(filterSelect.value)" #filterSelect>
+                    <option disabled="disabled">Filtrar por...</option>
+                    <option *ngFor="let item of selectItems" [value]="item.value" [selected]="filter === item.value">{{item.name}}</option>
+                </select>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="row" [hidden]="data.length>0">
+    <h5>No se encontraron resultados</h5>
+</div>
+
+<table *ngIf="data.length && columnas.length" class="bordered highlight">
+    <thead>
+        <tr>
+            <th *ngFor="let c of columnas; let i = index; let sort = sort">
+                {{c.titulo}}
+            </th>
+            <th *ngIf="showAcciones">
+                Acciones
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let d of data | searchfilter: filter : searchFilter">
+            <td *ngFor="let c of columnas" (click)="onCellClick(d)">{{d[c.nombreProp]}}</td>
+            <td *ngIf="showAcciones">
+                <ul *ngIf="d.acciones?.length">
+                    <li class="text-centered accion" *ngFor="let accion of d.acciones">
+                        <i class="fa fa-fw" [ngClass]="accion.icono" (click)="accion.accion(d)" title="{{accion.nombre}}"></i>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>

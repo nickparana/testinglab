@@ -1,0 +1,11 @@
+#logo{
+    height: 50px;
+    width: auto;
+    margin: 5px 5px 5px 5px;
+    float: right;
+}
+.site-footer {
+  display: block;
+  height: 70px; 
+  background: #212121;
+}

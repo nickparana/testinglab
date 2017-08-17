@@ -1,0 +1,17 @@
+<div  id="confirmationModal" class="confirm-box-container" *ngIf="active">
+    <div [@dialog] class="confirm-box">
+        <div class="container center">
+            <div class="col s12 m6">
+                <div class="card blue-grey darken-2">
+                    <div class="card-content white-text">
+                        <strong>{{message}}</strong>
+                    </div>
+                    <div class="card-action">
+                        <a id="cancelButton" class="btn waves-effect waves-light teal">{{cancelText}}</a>
+                        <a *ngIf="confirm" id="okButton" class="btn waves-effect waves-light teal">{{okText}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

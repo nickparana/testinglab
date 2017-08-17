@@ -1,0 +1,43 @@
+thead th{
+     cursor: pointer; cursor: hand; 
+}
+
+.search {
+  position: relative;
+  color: #616161;
+  font-size: 16px; 
+}
+
+.search input {
+  width: 325px;
+  height: 32px;
+
+  background: white;
+  border: 1px solid #757575;
+  border-radius: 5px;
+  box-shadow: 0 0 3px white;
+
+  margin-right: 10px;
+}
+
+.search input { text-indent: 32px;}
+.search .fa-search { 
+  position: absolute;
+  top: 8px;
+  left: 10px;
+}
+
+table ul{
+  margin:0px;
+}
+
+.accion {
+  /*z-index:-1;*/
+  cursor:pointer;
+  color:teal;
+  font-weight:bold;
+  font-size: 1.5em;
+  /*float: left;*/
+  /*padding: 3px;*/
+  display: inline;
+}

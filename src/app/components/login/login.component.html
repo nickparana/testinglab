@@ -1,0 +1,46 @@
+<div id="login" class="valign-wrapper" style="width:100%;height:100%;position: absolute;">
+	<div class="valign center" style="width:100%;">
+		<div class="container">
+			<div class="row">
+				<div class="row">
+					<!-- <div class="col s12">
+						<img id="logo" src="../../../../public/img/logo.png" />
+					</div> -->
+				</div>
+				<div class="row">
+					<h4 class="teal-text"><i class="fa fa-flask fa-lg fa-fw"></i>Hexacta Testing Lab </h4>
+					<h5 class="teal-text">App de inscripción para capacitaciones</h5>
+				</div>
+
+
+				<div class="col s12 m6 offset-m3" id="login-form">
+					<div class="row">
+						<form (ngSubmit)="onSubmit()">
+							<div class="row">
+								<div class="input-field col s7 offset-s2">
+									<i class="material-icons prefix">account_circle</i>
+									<input id="nickname" type="text" class="form-control" [(ngModel)]="usuario.username" name="userid" #nickname="ngModel" required>
+									<label for="nickname">Usuario</label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="input-field col s7 offset-s2">
+									<i class="material-icons prefix">vpn_key</i>
+									<input id="password" type="password" class="form-control" [(ngModel)]="usuario.password" name="password" required #password="ngModel">
+									<label for="password">Password</label>
+								</div>
+							</div>
+							<div class="row">
+								<button type="submit" class="btn waves-effect waves-light teal">INGRESAR</button>
+							</div>
+
+						</form>
+
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<p class="teal-text">Si no se ha registrado aún, ingrese <a (click)="goToRegister()">aquí</a></p>
+			</div>
+		</div>
+	</div>

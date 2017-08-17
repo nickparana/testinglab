@@ -1,0 +1,13 @@
+<div class="container">
+    <div id="tabla-alumnos" *ngIf="alumnos">
+        <tabla-root 
+            [showAcciones]="true" 
+            [showInput]="true" 
+            [showSelect]="true" 
+            [selectItems]="selectItems"
+            [data]="alumnos" 
+            [columnas]="columnas" 
+            (cellClick)="cellClicked($event);">
+        </tabla-root>
+    </div>
+</div>
