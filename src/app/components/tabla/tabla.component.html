@@ -1,17 +1,22 @@
 <div [hidden]="!showInput" class="row">
     <form (ngSubmit)="search(searchString.value)">
         <div class="search">
-            <span class="fa fa-search"></span>
-            <!--<input id="search" type="text" placeholder="Filtrar por..." #searchString  (keyup)="inputSearch(searchString.value)">-->
-            <input [disabled]="!data.length" id="search" type="text" placeholder="Buscar..." #searchString [(ngModel)]="searchFilter"
-                name="searchFilter">
-            <button [disabled]="!data.length" class="waves-effect waves-light btn teal" type="submit">
-					Buscar</button>
-            <div class="col s2" style="float:right;" [hidden]="!showSelect">
-                <select [disabled]="!data.length" class="browser-default" (change)="changeFilter(filterSelect.value)" #filterSelect>
+            <div class="row">
+                <div class="col s5">
+                    <span class="fa fa-search"></span>
+                    <input [disabled]="!data.length" id="search" type="text" placeholder="Buscar..." #searchString [(ngModel)]="searchFilter"
+                        name="searchFilter">
+                </div>
+                <div class="col s3" [hidden]="!showSelect">
+                    <select [disabled]="!data.length" class="browser-default" (change)="changeFilter(filterSelect.value)" #filterSelect>
                     <option disabled="disabled">Filtrar por...</option>
                     <option *ngFor="let item of selectItems" [value]="item.value" [selected]="filter === item.value">{{item.name}}</option>
                 </select>
+                </div>
+                <div class="col s3">
+                    <button [disabled]="!data.length" class="waves-effect waves-light btn teal" type="submit">
+                    Buscar</button>
+                </div>
             </div>
         </div>
     </form>

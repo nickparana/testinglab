@@ -55,7 +55,6 @@ export class CursoFormComponent {
     }
 
     onSubmit(form: any): void {
-        console.log(this.newCurso.fechaInicio)
         if (form.valid) {
             this.submitted = true;
             if (this.editMode) {

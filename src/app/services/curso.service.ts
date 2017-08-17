@@ -26,6 +26,9 @@ export class CursoService {
     }  
 
     createCurso(body: Curso): Observable<Curso> {
+
+        console.log(body)
+
         let bodyString = JSON.stringify(body);
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({

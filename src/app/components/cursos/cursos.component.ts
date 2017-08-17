@@ -27,9 +27,10 @@ export class CursosComponent implements OnInit {
         // { name: 'Todos', value: ''},
         { name: 'Nombre', value: 'nombre' },
         { name: 'Día', value: 'dia' },
-        { name: 'Horario', value: 'horario' },
         { name: 'Fecha Inicio', value: 'fechaInicio' },
         { name: 'Fecha Fin', value: 'fechaFin' },
+        { name: 'Hora Inicio', value: 'horaInicio' },
+        { name: 'Hora Fin', value: 'horaFin' },
         { name: 'Cupo', value: 'cupo' }
     ];
 
@@ -37,7 +38,8 @@ export class CursosComponent implements OnInit {
         // { titulo: 'Id', nombreProp: 'id', ruta: 'id', sort: '' },
         { titulo: 'Nombre', nombreProp: 'nombre', ruta: 'nombre', sort: '' },
         { titulo: 'Día', nombreProp: 'dia', ruta: 'dia', sort: '' },
-        { titulo: 'Horario', nombreProp: 'horario', ruta: 'horario', sort: '' },
+        { titulo: 'Hora Inicio', nombreProp: 'horaInicio', ruta: 'horaInicio', sort: '' },
+        { titulo: 'Hora Fin', nombreProp: 'horaFin', ruta: 'horaFin', sort: '' },
         { titulo: 'Fecha Inicio', nombreProp: 'fechaInicio', ruta: 'fechaInicio', sort: '' },
         { titulo: 'Fecha Fin', nombreProp: 'fechaFin', ruta: 'fechaFin', sort: '' },
         { titulo: 'Cupo', nombreProp: 'cupo', ruta: 'cupo', sort: '' },
@@ -80,7 +82,7 @@ export class CursosComponent implements OnInit {
     }
 
     // getCursosInscripto(){
-       
+
 
     // }
 
