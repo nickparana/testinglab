@@ -38,7 +38,7 @@
 												<i class="fa fa-calendar fa-lg fa-fw prefix"></i>
 												<!-- <input id="fechaInicio" type="text" class="form-control datepicker" [(ngModel)]="newCurso.fechaInicio" name="fechaInicio">  -->
 												<input id="fechaInicio" class="form-control validate" type="date" [(ngModel)]="newCurso.fechaInicio" name="fechaInicio" required>
-												<label class="active" for="fechaInicio" data-error="" data-success="">Fecha Inicio</label>												 
+												<label class="active" for="fechaInicio" data-error="" data-success="">Fecha Inicio</label>
 											</div>
 										</div>
 										<div class="col s6">
@@ -47,54 +47,55 @@
 												<i class="fa fa-calendar fa-lg fa-fw prefix"></i>
 												<!-- <input id="fechaFin" type="text" class="form-control datepicker" [(ngModel)]="newCurso.fechaFin" name="fechaFin" #v> -->
 												<input id="fechaFin" class="form-control validate" type="date" [(ngModel)]="newCurso.fechaFin" name="fechaFin" required>
-												<label class="active" for="fechaFin" data-error="" data-success="">Fecha Fin</label>										
+												<label class="active" for="fechaFin" data-error="" data-success="">Fecha Fin</label>
 											</div>
 										</div>
 									</div>
 
 									<!--Días-->
-									<!-- <label>Días curso</label>
-									<div class="row">
-										<div class="col s2">
-											<input type="checkbox" class="filled-in" id="lunes" value="LUN" #lunescb (change)="setDias(lunescb.value)" />
-											<label for="lunes">L</label>
-										</div>
+									<div id="horario">
+										<label>Días curso</label>
+										<div class="row">
+											<div class="col s2">
+												<input type="checkbox" class="filled-in" id="lunes" [(ngModel)]="newCurso.dias.lunes" name="lunes" />
+												<label for="lunes">L</label>
+											</div>
 
-										<div class="col s2">
-											<input type="checkbox" class="filled-in" id="martes" (change)="setDias('MAR')" />
-											<label for="martes">M</label>
+											<div class="col s2">
+												<input type="checkbox" class="filled-in" id="martes" [(ngModel)]="newCurso.dias.martes" name="martes" />
+												<label for="martes">M</label>
+											</div>
+											<div class="col s2">
+												<input type="checkbox" class="filled-in" id="miercoles" [(ngModel)]="newCurso.dias.miercoles" name="miercoles" />
+												<label for="miercoles">M</label>
+											</div>
+											<div class="col s2">
+												<input type="checkbox" class="filled-in" id="jueves" [(ngModel)]="newCurso.dias.jueves" name="jueves" />
+												<label for="jueves">J</label>
+											</div>
+											<div class="col s2">
+												<input type="checkbox" class="filled-in" id="viernes" [(ngModel)]="newCurso.dias.viernes" name="viernes" />
+												<label for="viernes">V</label>
+											</div>
 										</div>
-										<div class="col s2">
-											<input type="checkbox" class="filled-in" id="miercoles" (change)="setDias('MIE')" />
-											<label for="miercoles">M</label>
-										</div>
-										<div class="col s2">
-											<input type="checkbox" class="filled-in" id="jueves" (change)="setDias('JUE')" />
-											<label for="jueves">J</label>
-										</div>
-										<div class="col s2">
-											<input type="checkbox" class="filled-in" id="viernes" (change)="setDias('VIE')" />
-											<label for="viernes">V</label>
-										</div>
-									</div> -->
+									</div>
+
 
 									<div class="row">
 										<div class="col s6">
 											<!--Hora Inicio-->
-											<label>Hora Inicio</label>
 											<div class="input-field">
 												<i class="fa fa-clock-o fa-lg fa-fw prefix"></i>
 												<input id="horaInicio" type="time" class="form-control" [(ngModel)]="newCurso.horaInicio" name="horaInicio">
-
+												<label class="active" for="horaInicio" data-error="" data-success="">Hora Inicio</label>
 											</div>
 										</div>
 										<div class="col s6">
 											<!--Hora Fin-->
-											<label>Hora Fin</label>
 											<div class="input-field">
 												<i class="fa fa-clock-o fa-lg fa-fw prefix"></i>
 												<input id="horaFin" type="time" class="form-control" [(ngModel)]="newCurso.horaFin" name="horaFin">
-
+												<label class="active" for="horaFin" data-error="" data-success="">Hora Fin</label>
 											</div>
 										</div>
 									</div>

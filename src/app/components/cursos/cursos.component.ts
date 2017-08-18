@@ -11,6 +11,7 @@ import { Curso } from '../../models/curso';
 import { CursoService } from '../../services/curso.service';
 import { Alumno } from '../../models/alumno';
 import { AlumnoService } from '../../services/alumno.service';
+import { Dia } from '../../models/dia';
 
 @Component({
     selector: 'cursos',
@@ -26,24 +27,24 @@ export class CursosComponent implements OnInit {
     private selectItems: Array<SelectItem> = [
         // { name: 'Todos', value: ''},
         { name: 'Nombre', value: 'nombre' },
-        { name: 'Día', value: 'dia' },
+        { name: 'Días', value: 'diasStr' },
         { name: 'Fecha Inicio', value: 'fechaInicio' },
         { name: 'Fecha Fin', value: 'fechaFin' },
         { name: 'Hora Inicio', value: 'horaInicio' },
         { name: 'Hora Fin', value: 'horaFin' },
-        { name: 'Cupo', value: 'cupo' }
+        { name: 'Cupo', value: 'cupoStr' }
     ];
 
     public columnas: Array<any> = [
         // { titulo: 'Id', nombreProp: 'id', ruta: 'id', sort: '' },
         { titulo: 'Nombre', nombreProp: 'nombre', ruta: 'nombre', sort: '' },
-        { titulo: 'Día', nombreProp: 'dia', ruta: 'dia', sort: '' },
+        { titulo: 'Días', nombreProp: 'diasStr', ruta: 'diasStr', sort: '' },
         { titulo: 'Hora Inicio', nombreProp: 'horaInicio', ruta: 'horaInicio', sort: '' },
         { titulo: 'Hora Fin', nombreProp: 'horaFin', ruta: 'horaFin', sort: '' },
         { titulo: 'Fecha Inicio', nombreProp: 'fechaInicio', ruta: 'fechaInicio', sort: '' },
         { titulo: 'Fecha Fin', nombreProp: 'fechaFin', ruta: 'fechaFin', sort: '' },
-        { titulo: 'Cupo', nombreProp: 'cupo', ruta: 'cupo', sort: '' },
-        { titulo: 'Estoy inscripto', nombreProp: 'estoyInscripto', ruta: 'estoyInscripto', sort: '' }
+        { titulo: 'Cupo', nombreProp: 'cupoStr', ruta: 'cupoStr', sort: '' },
+        // { titulo: 'Estoy inscripto', nombreProp: 'estoyInscripto', ruta: 'estoyInscripto', sort: '' }
     ];
 
     constructor(
@@ -75,17 +76,26 @@ export class CursosComponent implements OnInit {
                 this.cursos.forEach((curso: Curso) => {
                     curso.fechaInicio = this.fechaService.getFechaConFormatoSinHora(curso.fechaInicio);
                     curso.fechaFin = this.fechaService.getFechaConFormatoSinHora(curso.fechaFin);
+                    curso.cupoStr = curso.cupo.toString();
+                    this.setDias(curso);
                     curso.acciones = [];
                     this.agregarAcciones(curso);
                 });
             });
     }
 
-    // getCursosInscripto(){
-
-
-    // }
-
+    setDias(curso: Curso) {
+        if (curso.dias) {
+            let str = "";
+            if (curso.dias.lunes) { str += "LUN " }
+            if (curso.dias.martes) { str += "MAR " }
+            if (curso.dias.miercoles) { str += "MIE " }
+            if (curso.dias.jueves) { str += "JUE " }
+            if (curso.dias.viernes) { str += "VIE " }
+            curso.diasStr = str;
+        }
+    }
+    
     eliminarCurso(curso: Curso): any {
         this.cBox.activate(true, '¿Desea eliminar este curso?')
             .then((result: any) => {

@@ -34,11 +34,13 @@ export class AlumnoDetailComponent implements OnInit {
     public columnas: Array<any> = [
         // { titulo: 'Id', nombreProp: 'id', ruta: 'id', sort: '' },
         { titulo: 'Nombre', nombreProp: 'nombre', ruta: 'nombre', sort: '' },
-        { titulo: 'Día', nombreProp: 'dia', ruta: 'dia', sort: '' },
-        { titulo: 'Horario', nombreProp: 'horario', ruta: 'horario', sort: '' },
+        { titulo: 'Días', nombreProp: 'diasStr', ruta: 'diasStr', sort: '' },
+        { titulo: 'Hora Inicio', nombreProp: 'horaInicio', ruta: 'horaInicio', sort: '' },
+        { titulo: 'Hora Fin', nombreProp: 'horaFin', ruta: 'horaFin', sort: '' },
         { titulo: 'Fecha Inicio', nombreProp: 'fechaInicio', ruta: 'fechaInicio', sort: '' },
         { titulo: 'Fecha Fin', nombreProp: 'fechaFin', ruta: 'fechaFin', sort: '' },
-        { titulo: 'Cupo', nombreProp: 'cupo', ruta: 'cupo', sort: '' }
+        { titulo: 'Cupo', nombreProp: 'cupoStr', ruta: 'cupoStr', sort: '' },
+        // { titulo: 'Estoy inscripto', nombreProp: 'estoyInscripto', ruta: 'estoyInscripto', sort: '' }
     ];
 
     ngOnInit(): void {
@@ -67,12 +69,28 @@ export class AlumnoDetailComponent implements OnInit {
                 },
                 () => {
                     this.alumno.curso.forEach((curso: Curso) => {
+                        // curso.fechaInicio = this.fechaService.getFechaConFormatoSinHora(curso.fechaInicio);
+                        // curso.fechaFin = this.fechaService.getFechaConFormatoSinHora(curso.fechaFin);
                         curso.fechaInicio = this.fechaService.getFechaConFormatoSinHora(curso.fechaInicio);
                         curso.fechaFin = this.fechaService.getFechaConFormatoSinHora(curso.fechaFin);
+                        curso.cupoStr = curso.cupo.toString();
+                        this.setDias(curso);
                     });
                 }
                 );
         });
+    }
+
+    setDias(curso: Curso) {
+        if (curso.dias) {
+            let str = "";
+            if (curso.dias.lunes) { str += "LUN " }
+            if (curso.dias.martes) { str += "MAR " }
+            if (curso.dias.miercoles) { str += "MIE " }
+            if (curso.dias.jueves) { str += "JUE " }
+            if (curso.dias.viernes) { str += "VIE " }
+            curso.diasStr = str;
+        }
     }
 
     deleteAlumno(): void {

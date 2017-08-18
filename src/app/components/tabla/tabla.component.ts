@@ -27,16 +27,10 @@ export class TablaComponent implements OnInit, OnChanges {
 
     @Input() selectItems: Array<any> = [];
 
-    @Output() cellClick = new EventEmitter();
-
     ngOnInit() { }
 
     ngOnChanges(changes: any) {
-    }
-
-    onCellClick(data: any) {
-        this.cellClick.emit(data);
-    }
+    }   
 
     changeFilter(filter: any) {
         this.filter = filter;

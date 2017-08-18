@@ -29,8 +29,8 @@ export class AlumnosComponent implements OnInit {
         { name: 'Nombre', value: 'nombre' },
         { name: 'Apellido', value: 'apellido' },
         { name: 'DNI', value: 'dni' },
-        { name: 'E-mail', value: 'email' },
-        { name: 'Username', value: 'username' },
+        // { name: 'E-mail', value: 'email' },
+        // { name: 'Username', value: 'username' },
         { name: 'Edad', value: 'edadStr' },
         { name: 'Condición', value: 'condicion' },
     ];
@@ -40,9 +40,10 @@ export class AlumnosComponent implements OnInit {
         { titulo: 'Nombre', nombreProp: 'nombre', ruta: 'usuario.nombre', sort: '' },
         { titulo: 'Apellido', nombreProp: 'apellido', ruta: 'usuario.apellido', sort: '' },
         { titulo: 'DNI', nombreProp: 'dni', ruta: 'usuario.dni', sort: '' },
+        { titulo: 'Username', nombreProp: 'username', ruta: 'usuario.username', sort: '' },
         { titulo: 'E-mail', nombreProp: 'email', ruta: 'usuario.email', sort: '' },
         { titulo: 'Edad', nombreProp: 'edadStr', ruta: 'edadStr', sort: '' },
-        // { titulo: 'Inscripto en', nombreProp: 'cursos', ruta: 'cursos', sort: '' },
+        { titulo: 'Inscripto en', nombreProp: 'cursos', ruta: 'cursos', sort: '' },
         { titulo: 'Condición', nombreProp: 'condicion', ruta: 'condicion', sort: '' },
     ];
 
@@ -77,6 +78,8 @@ export class AlumnosComponent implements OnInit {
                     this.agregarAcciones(alumno);
                     alumno.nombre = alumno.usuario.nombre;
                     alumno.apellido = alumno.usuario.apellido;
+                    alumno.username = alumno.usuario.username;
+                    alumno.email = alumno.usuario.email;
                     alumno.dni = alumno.usuario.dni;
                     alumno.email = alumno.usuario.email;
                     alumno.edadStr = alumno.edad.toString();

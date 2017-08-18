@@ -16,11 +16,13 @@ export class Alumno {
   public email: String;
   public dni: String;
   public cursos: String;
-
+  public username: String;
   public edadStr: String;
 
   public condicion: String;
 
-  constructor() { }
+  constructor() {
+    this.usuario = new Usuario();
+  }
 
 }

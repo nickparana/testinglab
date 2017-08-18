@@ -31,7 +31,16 @@ export class AlumnoFormComponent {
         private location: Location,
         private detector: ChangeDetectorRef,
         private cBox: ConfirmBoxService
-    ) { }
+    ) { 
+        if (!this.editMode){
+           this.getUsuario();
+        }        
+    }
+
+    getUsuario(){
+        let usuario: Usuario = JSON.parse(localStorage.getItem('usuario'));
+        this.newAlumno.usuario = usuario;
+    }
 
     resetFormAndGoBack(form: any) {
         if (this.submitted) {
@@ -44,25 +53,7 @@ export class AlumnoFormComponent {
     }
 
     onSubmit(form: any): void {
-
-        if (this.emailCheck != this.newAlumno.usuario.email) {
-            this.cBox.activate(false, "Los e-mail ingresados no coinciden")
-                .then()
-                .catch(error => {
-                    console.log(error);
-                });
-            return;
-        }
-
-        // if (this.passwordCheck != this.newAlumno.usuario.password && (this.passwordCheck.length > 0 && this.newAlumno.usuario.password.length > 0)) {
-        //     this.cBox.activate(false, "Las contraseñas ingresadas no coinciden")
-        //         .then()
-        //         .catch(error => {
-        //             console.log(error);
-        //         });
-        //     return;
-        // }
-
+     
         if (form.valid) {
             this.submitted = true;
             let me: Usuario = this.usuarioService.me();
@@ -86,7 +77,7 @@ export class AlumnoFormComponent {
             else {
                 this.alumnoService.createAlumno(this.newAlumno)
                     .subscribe(
-                    alumno => {
+                    alumno => {                     
                         this.cBox.activate(false, "Alumno creado")
                             .then()
                             .catch(error => {

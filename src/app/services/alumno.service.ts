@@ -4,6 +4,7 @@ import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Observable';
 import { Alumno } from '../models/alumno';
 import { Curso } from '../models/curso';
+import { Usuario } from '../models/usuario';
 
 @Injectable()
 export class AlumnoService {
@@ -26,6 +27,13 @@ export class AlumnoService {
             .catch(this.handleError);
     }
 
+     getAlumnoByUsuario(usuario: Usuario): Observable<Alumno> {
+        return this.http
+            .get(this.apiUrl + '/usuario/' + usuario.username)
+            .map(res => res.json())
+            .catch(this.handleError);
+    }
+
     createAlumno(body: Alumno): Observable<Alumno> {
         let bodyString = JSON.stringify(body);
         let headers = new Headers({ 'Content-Type': 'application/json' });
@@ -33,7 +41,7 @@ export class AlumnoService {
             method: RequestMethod.Post,
             headers: headers
         });
-
+        
         return this.http
             .post(this.apiUrl, bodyString, options)
             .map(res => res.json())
@@ -68,20 +76,20 @@ export class AlumnoService {
             .catch(this.handleError)
     }
 
-    inscribirseACurso(alumno: Alumno, curso: Curso): Observable<Alumno> {
-        // let bodyString = JSON.stringify(body);
-        let headers = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({
-            method: RequestMethod.Post,
-            headers: headers
-        });
-
-        return this.http
-            .post(this.apiUrl + "/" + alumno._id + "/curso/" + curso._id, {}, options)
+    inscribirseACurso(alumno: Alumno, curso: Curso): any {
+         return this.http
+            .get(this.apiUrl + "/" + alumno._id + "/curso/" + curso._id)
             .map(res => res.json())
-            .catch(this.handleError)
+            .catch(this.handleError);
+       
     }
 
+     desinscribirseACurso(alumno: Alumno, curso: Curso): any {
+         return this.http
+            .get(this.apiUrl + "/" + alumno._id + "/curso/" + curso._id + "/desinscribir" )
+            .map(res => res.json())
+            .catch(this.handleError);       
+    }
 
     private handleError(error: Response | any) {  // SACADO DE ANG2 DOC      
         let errMsg: String;

@@ -36,23 +36,7 @@ export class CursoFormComponent {
             form.reset();
             this.goBack();
         }
-    }
-
-    setDias(value: any) {
-        console.log(value)
-        // this.dias.forEach((dia: any) => {
-        //     console.log(dia)
-        //     if (dia == value) {
-        //         this.dias.splice(this.dias.indexOf(dia), 1);
-        //     }
-        //     else {
-        //         this.dias.push(value);
-        //     }
-        // });
-        // this.newCurso.dias = this.dias;
-        console.log(this.newCurso.fechaFin);
-        console.log(this.newCurso.horaFin)
-    }
+    }   
 
     onSubmit(form: any): void {
         if (form.valid) {
