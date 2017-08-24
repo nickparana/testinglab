@@ -14,23 +14,23 @@
 		</ul>
 
 		
-<div class="row" id="inscripcion-buttons">
-	<a class="waves-effect waves-light btn teal" (click)="inscribirseACurso()">
-		INSCRIBIRSE
-	</a>
-	<a class="waves-effect waves-light btn teal" (click)="desinscribirseACurso()">
-		DESINSCRIBIRSE
-	</a>	
-</div>
+		<div class="row" id="inscripcion-buttons">
+			<a class="waves-effect waves-light btn teal" (click)="inscribirseACurso()">
+				INSCRIBIRSE
+			</a>
+			<a class="waves-effect waves-light btn teal" (click)="desinscribirseACurso()">
+				DESINSCRIBIRSE
+			</a>	
+		</div>
 		
 	</div>
 </div>
 
 <div class="row form-buttons" *ngIf="!active">	
-	<a class="waves-effect waves-light btn teal" (click)="gotoEditCurso()">
+	<a *ngIf="isAdmin()" class="waves-effect waves-light btn teal" (click)="gotoEditCurso()">
 		<i class="fa fa-pencil fa-lg fa-fw pull-left"></i>EDITAR
 	</a>
-	<a class="waves-effect waves-light btn teal" (click)="deleteCurso()">
+	<a *ngIf="isAdmin()" class="waves-effect waves-light btn teal" (click)="deleteCurso()">
 		<i class="fa fa-trash-o fa-lg fa-fw pull-left"></i>ELIMINAR
 	</a>
 	<a class="waves-effect waves-light btn teal" (click)="goBack()">

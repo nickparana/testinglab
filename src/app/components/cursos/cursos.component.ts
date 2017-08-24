@@ -11,6 +11,8 @@ import { Curso } from '../../models/curso';
 import { CursoService } from '../../services/curso.service';
 import { Alumno } from '../../models/alumno';
 import { AlumnoService } from '../../services/alumno.service';
+import { UsuarioService } from '../../services/usuario.service';
+import { Usuario } from '../../models/usuario';
 import { Dia } from '../../models/dia';
 
 @Component({
@@ -22,6 +24,7 @@ import { Dia } from '../../models/dia';
 export class CursosComponent implements OnInit {
 
     cursos: Curso[];
+    usuario: Usuario;
     private active: boolean = false;
 
     private selectItems: Array<SelectItem> = [
@@ -55,16 +58,32 @@ export class CursosComponent implements OnInit {
         private fechaService: FechaService,
         private cursoService: CursoService,
         private alumnoService: AlumnoService,
+        private usuarioService: UsuarioService,
         private router: Router
     ) { }
 
     ngOnInit(): void {
         this.spinner.stop();
         this.getCursos();
+        this.getMe();
     }
 
     ngOnDestroy() {
         this.spinner.start();
+    }
+
+    getMe() {
+        this.usuarioService.check()
+            .subscribe((data: any) => {
+                if (localStorage.getItem('usuario')) {
+                    let usuario: Usuario = JSON.parse(localStorage.getItem('usuario'));
+                    this.usuario = usuario;
+                }
+                else {
+                    this.usuario = JSON.parse(data);
+                }
+            },
+            (error: any) => console.log(error));
     }
 
     getCursos(): void {
@@ -142,17 +161,19 @@ export class CursosComponent implements OnInit {
             accion: this.verDetailsCurso.bind(this)
         });
 
-        curso.acciones.push({
-            nombre: "Editar",
-            icono: 'fa-pencil',
-            accion: this.editarCurso.bind(this)
-        });
-
-        curso.acciones.push({
-            nombre: "Eliminar",
-            icono: 'fa-trash-o',
-            accion: this.eliminarCurso.bind(this)
-        });
+        if (this.usuario.username === 'admin') {
+            curso.acciones.push({
+                nombre: "Editar",
+                icono: 'fa-pencil',
+                accion: this.editarCurso.bind(this)
+            });
+    
+            curso.acciones.push({
+                nombre: "Eliminar",
+                icono: 'fa-trash-o',
+                accion: this.eliminarCurso.bind(this)
+            });
+        };
     }
 
     goBack(): void {

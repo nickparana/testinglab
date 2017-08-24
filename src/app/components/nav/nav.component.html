@@ -29,7 +29,7 @@
 			<a routerLink="cursos" class="grey-text text-darken-4">
 				<i class="fa fa-list fa-lg fa-fw pull-left"></i>Lista</a>
 		</li>
-		<li routerLinkActive="active">
+		<li [hidden]="!(usuario?.username === 'admin')" routerLinkActive="active">
 			<a routerLink="curso-nuevo" class="grey-text text-darken-4">
 				<i class="fa fa-plus-square-o fa-lg fa-fw pull-left"></i>Nuevo</a>
 		</li>
@@ -59,14 +59,14 @@
 					</li> -->
 
 					<!-- Dropdown Usuarios Trigger -->
-					 <li [class.active]="this.router.url === '/usuario-nuevo' || this.router.url === '/usuarios' || this.router.url === '/usuario-detail'">
+					 <li [hidden]="!(usuario?.username === 'admin')" [class.active]="this.router.url === '/usuario-nuevo' || this.router.url === '/usuarios' || this.router.url === '/usuario-detail'">
 						<a routerLink="usuarios" class="dropdown-button" data-activates="dropdownUsuarios" data-hover="true" data-beloworigin="true">
 							<i class="fa fa-users fa-lg fa-fw pull-left"></i>Usuarios
 						</a>
 					</li> 
 
 					<!-- Dropdown Alumnos Trigger -->
-					<li [class.active]="this.router.url === '/alumno-nuevo' || this.router.url === '/alumnos' || this.router.url === '/alumno-detail'">
+					<li [hidden]="!(usuario?.username === 'admin')" [class.active]="this.router.url === '/alumno-nuevo' || this.router.url === '/alumnos' || this.router.url === '/alumno-detail'">
 						<a routerLink="alumnos" class="dropdown-button" data-activates="dropdownAlumnos" data-hover="true" data-beloworigin="true">
 							<i class="fa fa-graduation-cap fa-lg fa-fw pull-left"></i>Alumnos
 						</a>
@@ -99,7 +99,7 @@
 								<a routerLink="home" class="collapsible-header"><i class="fa fa-home fa-lg fa-fw pull-left"></i>Home</a>
 							</li> -->
 
-							 <li class="bold">
+							 <li *ngIf="(usuario?.username === 'admin')" class="bold">
 								<a class="collapsible-header  waves-effect waves-teal" routerLink="usuarios">
 									<i class="fa fa-users fa-lg fa-fw pull-left"></i>Usuarios</a>
 								<div class="collapsible-body">
@@ -116,7 +116,7 @@
 								</div>
 							</li> 
 
-							<li class="bold">
+							<li *ngIf="(usuario?.username === 'admin')" class="bold">
 								<a class="collapsible-header  waves-effect waves-teal" routerLink="alumnos">
 									<i class="fa fa-graduation-cap fa-lg fa-fw pull-left"></i>Alumnos</a>
 								<div class="collapsible-body">
@@ -142,7 +142,7 @@
 											<a routerLink="cursos">
 												<i class="fa fa-list fa-lg fa-fw pull-left"></i>Lista</a>
 										</li>
-										<li>
+										<li *ngIf="(usuario?.username === 'admin')">
 											<a routerLink="curso-nuevo">
 												<i class="fa fa-plus-square-o fa-lg fa-fw pull-left"></i>Nuevo</a>
 										</li>

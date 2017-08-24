@@ -67,8 +67,13 @@ export class CursoDetailComponent implements OnInit {
                     this.setDias(this.curso);
                     this.getAlumnoByUsuario();
                 }
-                );
+            );
         });
+    }
+    
+    isAdmin(): Boolean {
+        let usuario: Usuario = this.usuarioService.me();
+        return usuario.username === 'admin';
     }
 
     getAlumnoByUsuario() {

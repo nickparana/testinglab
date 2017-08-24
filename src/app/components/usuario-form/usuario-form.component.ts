@@ -1,6 +1,8 @@
 import { Component, ViewChild, Input, ChangeDetectorRef } from '@angular/core';
 import { Usuario } from '../../models/usuario';
 import { UsuarioService } from '../../services/usuario.service';
+import { Alumno } from '../../models/alumno';
+import { AlumnoService } from '../../services/alumno.service';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { ConfirmBoxService } from '../../services/confirm-box.service';
@@ -24,6 +26,7 @@ export class UsuarioFormComponent {
 
     constructor(
         private usuarioService: UsuarioService,
+        private alumnoService: AlumnoService,
         private router: Router,
         private location: Location,
         private detector: ChangeDetectorRef,
@@ -84,6 +87,23 @@ export class UsuarioFormComponent {
                 this.usuarioService.createUsuario(this.newUsuario)
                     .subscribe(
                     usuario => {
+
+                        //Aca creo el alumno tambien, no queda muy bien, pero salio andando.
+                        let newAlumno: Alumno = new Alumno();
+                        newAlumno.usuario = usuario;
+                        newAlumno.edad = 0;
+                        newAlumno.regular = true;
+
+                        this.alumnoService.createAlumno(newAlumno)
+                            .subscribe(
+                            alumno => {                     
+                                console.log('Alumno creado tambien');
+                            },
+                            error => {
+                                console.log(error);
+                            },
+                            () => {});
+
                         this.cBox.activate(false, "Usuario creado")
                             .then()
                             .catch(error => {
